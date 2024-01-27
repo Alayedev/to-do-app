@@ -1,0 +1,29 @@
+<main class="container col-6  mx-auto my-3 ">
+    <div class="card shadow-lg px-2 pt-2">
+      <h4 class="text-center">Ajouter une tache.</h4>
+      <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="form-group">
+          <div>
+            <label for="" class="label-form">Nom de la tache</label>
+            <input type="text" formControlName="name" class="form-control my-1" placeholder="Ajouter une tache">
+            <span *ngIf="name!.errors?.['required']" class="text-danger">Le nom est obligatoire</span>
+            <span *ngIf="name!.errors?.['minlength']" class="text-danger"> Le nom doit avoir au moins 5 caractere</span>
+
+          </div>
+          <div class="my-3">
+            <button class="btn btn-primary" [disabled]="!todoForm.valid" >Enregister</button>
+          </div>
+      </form>
+    </div>
+
+    <div>
+      <h3>Liste des taches</h3>
+      <ul class="list-group">
+       
+        <li *ngFor="let todo of todos"  class="list-group-item my-1">
+          <div class="d-flex justify-content-between">
+            <span class="col-3">{{ todo.name }}</span> <span class="col-2">En cours</span> <a routerLink="['todo-edit', todo.id]" class=" col-2 btn btn-warning mx-1">Edit</a> <button class="col-2 btn btn-danger">Supprimer</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>

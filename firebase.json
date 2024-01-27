@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "to-do-app",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ]
+}
